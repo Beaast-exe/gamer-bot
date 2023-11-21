@@ -1,0 +1,18 @@
+module.exports = {
+	token: 'YOUR-TOKEN-HERE',
+	prefix: 'g!',
+	ownerID: 'OWNER_ID',
+	developerGuild: 'GUILD_ID',
+	mongodb: 'MONGODB-CONNECT-URL',
+	emojis: {
+		check: '✅',
+		music: {
+			play: '▶️',
+			stop: '⏹️',
+			queue: '📄',
+			success: '☑️',
+			repeat: '🔁',
+			error: '❌'
+		}
+	}
+};

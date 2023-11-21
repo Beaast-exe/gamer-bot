@@ -1,0 +1,19 @@
+{
+	"name": "gamer-bot",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js --dev"
+	},
+	"dependencies": {
+		"ascii-table": "^0.0.9",
+		"discord-arts": "^0.5.8",
+		"discord.js": "^14.14.1",
+		"mongoose": "^8.0.1"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1"
+	}
+}

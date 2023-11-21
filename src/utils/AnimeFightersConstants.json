@@ -1,0 +1,200 @@
+{
+	"starPrices": {
+		"Super Island": {
+			"yen": "80",
+			"max": "21"
+		},
+		"Ninja Village": {
+			"yen": "300",
+			"max": "53"
+		},
+		"Crazy Town": {
+			"yen": "2500",
+			"max": "227"
+		},
+		"Fruits Island": {
+			"yen": "10000",
+			"max": "593"
+		},
+		"Hero University": {
+			"yen": "50000",
+			"max": "1800"
+		},
+		"Walled City": {
+			"yen": "250000",
+			"max": "5510"
+		},
+		"Slayer Army": {
+			"yen": "800000",
+			"max": "12300"
+		},
+		"Ghoul Town": {
+			"yen": "3000000",
+			"max": "30800"
+		},
+		"Chimera Jungle": {
+			"yen": "10000000",
+			"max": "71100"
+		},
+		"Virtual Castle": {
+			"yen": "40000000",
+			"max": "185000"
+		},
+		"Empty Dimension": {
+			"yen": "150000000",
+			"max": "464000"
+		},
+		"Cursed High": {
+			"yen": "500000000",
+			"max": "1070000"
+		},
+		"XYZ Metropolis": {
+			"yen": "1500000000",
+			"max": "2290000"
+		},
+		"9 Crimes Island": {
+			"yen": "5000000000",
+			"max": "5280000"
+		},
+		"Destiny Island": {
+			"yen": "20000000000",
+			"max": "13800000"
+		},
+		"Lucky Kingdom": {
+			"yen": "80000000000",
+			"max": "36000000"
+		},
+		"Land of Alchemy": {
+			"yen": "250000000000",
+			"max": "79500000"
+		},
+		"Slimey Island": {
+			"yen": "780000000000",
+			"max": "174000000"
+		},
+		"Flame City": {
+			"yen": "2430000000000",
+			"max": "384000000"
+		},
+		"Divine Colosseum": {
+			"yen": "7580000000000",
+			"max": "846000000"
+		},
+		"Kingdom of Four": {
+			"yen": "23600000000000",
+			"max": "1860000000"
+		},
+		"Icy Wastes": {
+			"yen": "73600000000000",
+			"max": "4090000000"
+		},
+		"The Underworld": {
+			"yen": "228000000000000",
+			"max": "8960000000"
+		},
+		"Psychic City": {
+			"yen": "707000000000000",
+			"max": "19600000000"
+		},
+		"The Hole": {
+			"yen": "2000000000000000",
+			"max": "43000000000"
+		},
+		"Ninja City": {
+			"yen": "6790000000000000",
+			"max": "94200000000"
+		},
+		"Time Travel Tokyo": {
+			"yen": "21000000000000000",
+			"max": "206000000000"
+		},
+		"Orca Road Prison": {
+			"yen": "66000000000000000",
+			"max": "455000000000"
+		},
+		"World of Games": {
+			"yen": "220000000000000000",
+			"max": "1040000000000"
+		},
+		"Fashion Empire": {
+			"yen": "660000000000000000",
+			"max": "2240000000000"
+		},
+		"Land of Guts": {
+			"yen": "1980000000000000000",
+			"max": "4810000000000"
+		},
+		"Hero Village": {
+			"yen": "6000000000000000000",
+			"max": "10300000000000"
+		},
+		"Sorcerer Empire": {
+			"yen": "18000000000000000000",
+			"max": "22200000000000"
+		},
+		"Soul Academy": {
+			"yen": "54000000000000000000",
+			"max": "47500000000000"
+		},
+		"World at War": {
+			"yen": "166000000000000000000",
+			"max": "101000000000000"
+		},
+		"The Abyss": {
+			"yen": "486000000000000000000",
+			"max": "218000000000000"
+		},
+		"False Paradise": {
+			"yen": "980000000000000000000",
+			"max": "354000000000000"
+		},
+		"Land of Wanzo": {
+			"yen": "2000000000000000000000",
+			"max": "581000000000000"
+		},
+		"Slayers Forest": {
+			"yen": "15000000000000000000000",
+			"max": "2350000000000000"
+		},
+		"Thousand Year War": {
+			"yen": "45000000000000000000000",
+			"max": "5030000000000000"
+		},
+		"Martial World": {
+			"yen": "260000000000000000000000",
+			"max": "16900000000000000"
+		},
+		"Sorcerers World": {
+			"yen": "4750000000000000000000000",
+			"max": "127000000000000000"
+		},
+		"Mystic Island": {
+			"yen": "15500000000000000000000000",
+			"max": "350000000000000000"
+		},
+		"Steel Ball Island": {
+			"yen": "247000000000000000000000000",
+			"max": "24000000000000000000"
+		}
+	},
+
+	"numberAbbreviations": [
+		{ "value": 1, "symbol": "" },
+		{ "value": 1e3, "symbol": "K" },
+		{ "value": 1e6, "symbol": "M" },
+		{ "value": 1e9, "symbol": "B" },
+		{ "value": 1e12, "symbol": "T" },
+		{ "value": 1e15, "symbol": "Q" },
+		{ "value": 1e18, "symbol": "E" },
+		{ "value": 1e21, "symbol": "Z" },
+		{ "value": 1e24, "symbol": "Y" },
+		{ "value": 1e27, "symbol": "X" },
+		{ "value": 1e30, "symbol": "W" }
+	],
+
+	"maxOpensPerHour": 40,
+	"starOpenTime": 4.5,
+	"50kBoostTime": 1.5,
+	"FastOpenGamepassTime": 1.5,
+	"vipMultiplier": 0.75
+}
