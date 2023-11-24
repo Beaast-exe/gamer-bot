@@ -4,7 +4,9 @@ const welcomeSchema = new Schema({
 	Guild: String,
 	Channel: String,
 	Message: String,
-	Role: String
+	Role: String,
+	Title: String,
+	Image: String
 });
 
 module.exports = model('Welcome', welcomeSchema);
