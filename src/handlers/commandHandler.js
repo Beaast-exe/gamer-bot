@@ -16,17 +16,19 @@ async function loadCommands (client) {
 		const commandsFiles = fs.readdirSync(`./src/commands/${folder}`).filter(file => file.endsWith('.js'));
 
 		for (const file of commandsFiles) {
-			const commandsFile = require(`../commands/${folder}/${file}`);
+			const commandFile = require(`../commands/${folder}/${file}`);
 
-			if (commandsFile.context) {
-				client.contextCommands.set(commandsFile.data.name, commandsFile);
-				commandsArray.push(commandsFile.data.toJSON());
+			if (commandFile.context) {
+				client.contextCommands.set(commandFile.data.name, commandFile);
+				commandsArray.push(commandFile.data.toJSON());
 			} else {
-				client.commands.set(commandsFile.data.name, commandsFile);
-				if (commandsFile.json) {
-					commandsArray.push(commandsFile.data);
+				const properties = { folder, ...commandFile };
+				client.commands.set(commandFile.data.name, properties);
+				
+				if (commandFile.json) {
+					commandsArray.push(commandFile.data);
 				} else {
-					commandsArray.push(commandsFile.data.toJSON());
+					commandsArray.push(commandFile.data.toJSON());
 				}
 			}
 
