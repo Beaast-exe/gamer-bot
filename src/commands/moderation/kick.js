@@ -20,7 +20,7 @@ module.exports = {
 	 * @param {Client} client 
 	 */
 	async run (interaction, client) {
-		const { channel, options } = interaction;
+		const { options } = interaction;
 
 		const user = options.getUser('membro');
 		const reason = options.getString('motivo') || `Expulso por: ${interaction.user.tag}`;
@@ -42,7 +42,7 @@ module.exports = {
 
 		const embed = new EmbedBuilder()
 			.setColor('#ff0000')
-			.setDescription(`${user} foi kickado pelo motivo: ${reason}`);
+			.setDescription(`${user} foi expulso pelo motivo: ${reason}`);
 		
 		await interaction.reply({ embeds: [embed] });
 	}
