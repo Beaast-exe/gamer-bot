@@ -1,0 +1,40 @@
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, Client, ChatInputCommandInteraction } = require('discord.js');
+const ms = require('ms');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('castigar')
+		.setDescription('Castiga um membro do servidor.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
+		.addUserOption(option => option
+			.setName('membro')
+			.setDescription('Membro que será castigado.')
+			.setRequired(true))
+		.addStringOption(option => option
+			.setName('tempo')
+			.setDescription('Quanto tempo deve durar o castigo ?')
+			.setRequired(true))
+		.addStringOption(option => option
+			.setName('motivo')
+			.setDescription('Qual o motivo do castigo ?')
+			.setRequired(false)),
+
+	/**
+	 * 
+	 * @param {ChatInputCommandInteraction} interaction 
+	 * @param {Client} client 
+	 */
+	async run (interaction, client) {
+		const { guild, options } = interaction;
+
+		const user = options.getUser('membro');
+		const member = guild.members.cache.get(user.id);
+		const time = options.getString('tempo');
+		const convertedTime = ms(time);
+		const reason = options.getString('motivo') || `Castigado por: ${interaction.user.tag}`;
+
+		const errorEmbed = new EmbedBuilder()
+			.setColor('#ff0000')
+			.setDescription('');
+	}
+};
