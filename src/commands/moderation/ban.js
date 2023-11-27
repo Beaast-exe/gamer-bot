@@ -27,6 +27,8 @@ module.exports = {
 
 		const member = await interaction.guild.members.fetch(user.id);
 
+		if (!interaction.guild.members.me.permissions.has(PermissionFlagsBits.BanMembers)) return interaction.reply({ content: 'Não tenho permissão para executar essa ação.', ephemeral: true });
+
 		const errorEmbed = new EmbedBuilder()
 			.setColor('#ff0000')
 			.setDescription(`Não podes banir o membro ${user} por ele ter um cargo superior a ti.`);
