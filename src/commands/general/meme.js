@@ -28,7 +28,7 @@ module.exports = {
 				const author = meme[0].data.children[0].data.author;
 
 				return interaction.reply({
-					embeds: [embed.setTitle(title).setImage(url).setURL(url).setFooter({ text: author })]
+					embeds: [embed.setTitle(`${title}`).setImage(`${url}`).setURL(`${url}`).setFooter({ text: `${author}` })]
 				});
 			});
 		}
@@ -44,7 +44,7 @@ module.exports = {
 				const authorImage = meme.data.user.avatar_url;
 
 				return interaction.reply({
-					embeds: [embed.setTitle(title).setImage(url).setURL(link).setFooter({ text: author, iconURL: authorImage })]
+					embeds: [embed.setTitle(`${title}`).setImage(`${url}`).setURL(`${link}`).setFooter({ text: `${author}`, iconURL: `${authorImage}` })]
 				});
 			});
 		}
