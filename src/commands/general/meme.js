@@ -14,9 +14,10 @@ module.exports = {
 				{ name: 'Giphy', value: 'giphy' }
 			)),
 	async run (interaction, client) {
-		const { guild, options, member } = interaction;
+		const { options } = interaction;
 
 		const platform = options.getString('plataforma');
+		const embed = new EmbedBuilder().setColor('#ff0000');
 
 		async function redditMeme () {
 			await fetch('https://www.reddit.com/r/memes/random/.json').then(async res => {
@@ -27,15 +28,36 @@ module.exports = {
 				const author = meme[0].data.children[0].data.author;
 
 				return interaction.reply({
-					embeds: [new EmbedBuilder().setColor('#ff0000').setTitle(title).setImage(url).setURL(url).setFooter({ text: author })]
+					embeds: [embed.setTitle(title).setImage(url).setURL(url).setFooter({ text: author })]
 				});
 			});
 		}
 
 		async function giphyMeme () {
-			await fetch('https://www.reddit.com/r/memes/random/.json').then(async res => {
+			await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${client.config.giphyKey}&tag=&rating=g`).then(async res => {
+				const meme = await res.json();
 
+				const title = meme.data.title;
+				const url = meme.data.images.original.url;
+				const link = meme.data.url;
+				const author = meme.data.user.display_name;
+				const authorImage = meme.data.user.avatar_url;
+
+				return interaction.reply({
+					embeds: [embed.setTitle(title).setImage(url).setURL(link).setFooter({ text: author, iconURL: authorImage })]
+				});
 			});
+		}
+
+		if (platform === 'reddit') {
+			redditMeme();
+		} else if (platform === 'giphy') {
+			giphyMeme();
+		}
+
+		if (!platform) {
+			const memes = [giphyMeme, redditMeme];
+			memes[Math.floor(Math.random() * memes.length)]();
 		}
 	}
 };

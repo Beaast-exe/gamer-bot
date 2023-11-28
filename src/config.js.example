@@ -4,6 +4,7 @@ module.exports = {
 	ownerID: 'OWNER_ID',
 	developerGuild: 'GUILD_ID',
 	mongodb: 'MONGODB-CONNECT-URL',
+	giphyKey: 'GIPHY-API-KEY',
 	emojis: {
 		check: '✅',
 		music: {
