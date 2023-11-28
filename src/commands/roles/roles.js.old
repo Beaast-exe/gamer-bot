@@ -1,0 +1,88 @@
+const { SlashCommandBuilder, PermissionFlagsBits, ChatInputCommandInteraction, Client } = require('discord.js');
+const reactionRolesSchema = require('../../models/ReactionRoles');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('roles')
+		.setDescription('Comando geral de cargos')
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles)
+		.addSubcommand(subCommand => subCommand
+			.setName('add')
+			.setDescription('Adiciona um novo cargo ao servidor')
+			.addRoleOption(option => option
+				.setName('cargo')
+				.setDescription('Cargo para ser adicionado')
+				.setRequired(true))
+			.addStringOption(option => option
+				.setName('descrição')
+				.setDescription('Descrição do cargo')
+				.setRequired(false))
+			.addStringOption(option => option
+				.setName('emoji')
+				.setDescription('Emoji do cargo')
+				.setRequired(false)))
+		.addSubcommand(subCommand => subCommand
+			.setName('remove')
+			.setDescription('Remove um novo cargo ao servidor'))
+		.addSubcommand(subCommand => subCommand
+			.setName('painel')
+			.setDescription('Cria o painel de cargos')),
+
+	/**
+	 * 
+	 * @param {ChatInputCommandInteraction} interaction 
+	 * @param {Client} client 
+	 */
+	async run (interaction, client) {
+		const { options, member, guildId } = interaction;
+
+		try {
+			switch (options.getSubcommand()) {
+				case 'add': {
+					const role = options.getRole('cargo');
+					const description = options.getString('descrição');
+					const emoji = options.getString('emoji');
+
+					try {
+						if (role.position >= member.roles.highest.position) return interaction.reply({ content: 'Não podes criar um cargo acima de ti.', ephemeral: true });
+						if (role.position >= interaction.guild.members.me.roles.highest.position) return interaction.reply({ content: 'Não posso criar um cargo acima de mim', ephemeral: true });
+
+						const data = await reactionRolesSchema.findOne({ guild_id: guildId });
+
+						const newRoleData = {
+							roleId: role.id,
+							roleDescription: description || 'Nenhuma Descrição.',
+							roleEmoji: emoji || ''
+						};
+
+						if (data) {
+							let roleData = data.roles.find(x => x.roleId === role.id);
+
+							if (roleData) {
+								roleData = newRoleData;
+							} else {
+								data.roles = [...data.roles, newRoleData];
+							}
+
+							await data.save();
+						} else {
+							await reactionRolesSchema.create({
+								guild_id: guildId,
+								roles: newRoleData
+							});
+						}
+
+						return interaction.reply({ content: `Cargo **${role.name}** criado com sucesso`, ephemeral: true });
+					} catch (error) {
+						console.log(error);
+						return interaction.reply({ content: 'Houve um erro ao usar o comando:', ephemeral: true });
+					}
+					break;
+				}
+			}
+		} catch (error) {
+			console.log(error);
+			return interaction.reply({ content: 'Houve um erro ao usar o comando:', ephemeral: true });
+		}
+	}
+};

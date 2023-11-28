@@ -90,7 +90,7 @@ module.exports = {
         'lines-around-comment': 'error',
         'lines-between-class-members': 'error',
         'max-classes-per-file': 'error',
-        'max-depth': 'error',
+        'max-depth': 'off',
         // 'max-len': 'error',
         // 'max-lines': 'error',
         // 'max-lines-per-function': 'error',
