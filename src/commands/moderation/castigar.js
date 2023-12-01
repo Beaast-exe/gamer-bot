@@ -47,7 +47,7 @@ module.exports = {
 			.setColor('#ff0000')
 			.setDescription(`Não posso castigar o membro ${user} por ele ter um cargo superior a mim`);
 
-		if (member.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
+		if (member.roles.highest.position >= interaction.member.roles.highest.position && interaction.guild.ownerId !== member.id) return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
 		if (!member.moderatable) return interaction.reply({ embeds: [cantModerateUser], ephemeral: true });
 
 		const successEmbed = new EmbedBuilder()

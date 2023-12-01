@@ -37,7 +37,7 @@ module.exports = {
 			.setColor('#ff0000')
 			.setDescription(`Não posso banir o membro ${user} por ele ter um cargo superior a mim`);
 
-		if (member.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
+		if (member.roles.highest.position >= interaction.member.roles.highest.position && interaction.guild.ownerId !== member.id) return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
 		if (!member.bannable) return interaction.reply({ embeds: [cantBanUser], ephemeral: true });
 
 		await member.ban({ reason });

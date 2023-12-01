@@ -37,7 +37,7 @@ module.exports = {
 			.setColor('#ff0000')
 			.setDescription(`Não posso expulsar o membro ${user} por ele ter um cargo superior a mim`);
 
-		if (member.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
+		if (member.roles.highest.position >= interaction.member.roles.highest.position && interaction.guild.ownerId !== member.id) return interaction.reply({ embeds: [errorEmbed], ephemeral: true });
 		if (!member.kickable) return interaction.reply({ embeds: [cantKickUser], ephemeral: true });
 
 		await member.kick(reason);
