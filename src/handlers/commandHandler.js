@@ -41,11 +41,11 @@ async function loadCommands (client) {
 	if (client.dev) {
 		client.application.commands.set([]);
 		client.guilds.cache.get(client.server).commands.set(commandsArray);
-		client.guilds.cache.get('1122131768355602513').commands.set(commandsArray);
+		client.guilds.cache.get('989661003795025990').commands.set(commandsArray);
 	} else {
 		client.application.commands.set(commandsArray);
 		client.guilds.cache.get(client.server).commands.set([]);
-		client.guilds.cache.get('1122131768355602513').commands.set([]);
+		client.guilds.cache.get('989661003795025990').commands.set([]);
 	}
 
 	return console.log('Loaded Commands:', `\n${table.toString()}`);
