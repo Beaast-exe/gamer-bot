@@ -42,12 +42,10 @@ async function loadCommands (client) {
 		client.application.commands.set([]);
 		client.guilds.cache.get(client.server).commands.set(commandsArray);
 		client.guilds.cache.get('1122131768355602513').commands.set(commandsArray);
-		client.guilds.cache.get('1119535148682194966').commands.set(commandsArray); // Galera dos Mods
 	} else {
 		client.application.commands.set(commandsArray);
 		client.guilds.cache.get(client.server).commands.set([]);
 		client.guilds.cache.get('1122131768355602513').commands.set([]);
-		client.guilds.cache.get('1119535148682194966').commands.set([]); // Galera dos Mods
 	}
 
 	return console.log('Loaded Commands:', `\n${table.toString()}`);
