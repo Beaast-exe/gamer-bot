@@ -1,0 +1,21 @@
+const { Client, EmbedBuilder, GuildMember, AttachmentBuilder, VoiceState } = require('discord.js');
+
+module.exports = {
+	name: 'voiceStateUpdate',
+
+	/**
+	 * 
+	 * @param {VoiceState} oldState 
+	 * @param {VoiceState} newState
+	 * @param {Client} client 
+	 */
+	async run (oldState, newState, client) {
+		const userId = '1132411408202612776';
+
+		const state = newState || oldState;
+
+		if (newState.mute || newState.deaf || newState.streaming) {
+			state.disconnect('Nossa uwuzinho mau');
+		}
+	}
+};

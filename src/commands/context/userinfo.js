@@ -9,7 +9,6 @@ module.exports = {
 		.setType(ApplicationCommandType.User)
 		.setDMPermission(false),
 	context: true,
-
 	/**
 	 * 
 	 * @param {UserContextMenuCommandInteraction} interaction 
