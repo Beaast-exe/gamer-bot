@@ -10,12 +10,12 @@ module.exports = {
 	 * @param {Client} client 
 	 * @returns 
 	 */
-	async run (member, client) {
+	async run(member, client) {
 		try {
 			const data = await WelcomeSchema.findOne({ Guild: member.guild.id });
 
 			if (!data) return;
-			
+
 			const channel = data.Channel;
 			let Message = data.Message || '';
 			const Role = data.Role;
@@ -33,7 +33,13 @@ module.exports = {
 				.setColor('#ff0000')
 				.setTitle(`${Title}`)
 				.setDescription(Message);
-			if (Image !== 'None') welcomeEmbed.setImage(Image);
+			if (Image !== 'None') {
+				if (Image === '%guild_image%') {
+					welcomeEmbed.setImage(guild.iconURL())
+				} else {
+					welcomeEmbed.setImage(Image);
+				}
+			}
 
 			welcomeChannel.send({ embeds: [welcomeEmbed] });
 			member.roles.add(Role);

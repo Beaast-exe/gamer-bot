@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('setup')
 		.setDescription('Configura o teu servidor')
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+		.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
 		.addSubcommandGroup(subCommandGroup => subCommandGroup
 			.setName('welcome')
 			.setDescription('Configura a mensagem de bem-vindo do servidor')
@@ -43,7 +43,7 @@ module.exports = {
 	 * @param {ChatInputCommandInteraction} interaction 
 	 * @param {Client} client 
 	 */
-	async run (interaction, client) {
+	async run(interaction, client) {
 		const { options } = interaction;
 
 		try {
@@ -79,7 +79,7 @@ module.exports = {
 								Title: titulo,
 								Image: imageUrl
 							}, { new: true });
-			
+
 							interaction.reply({ content: 'Mensagem de bem-vindo atualizada com sucesso.', ephemeral: true });
 						} catch (error) {
 							console.log(error);
@@ -106,7 +106,13 @@ module.exports = {
 						.setColor('#ff0000')
 						.setTitle(`${Title}`)
 						.setDescription(Message);
-					if (Image !== 'None') welcomeEmbed.setImage(Image);
+					if (Image !== 'None') {
+						if (Image === '%guild_image%') {
+							welcomeEmbed.setImage(guild.iconURL())
+						} else {
+							welcomeEmbed.setImage(Image);
+						}
+					}
 
 					interaction.reply({ embeds: [welcomeEmbed] });
 					break;
