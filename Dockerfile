@@ -1,15 +1,18 @@
-FROM node:alpine
+FROM ubuntu:latest
+USER root
 
 WORKDIR /app
 
 COPY package.json ./
 
-RUN apk update
-RUN apk add
-RUN apk add --no-cache make gcc g++ libc6-compat bash python3 ffmpeg
+RUN apt -y update
+RUN apt -y install curl gnupg ffmpeg build-essential
+RUN curl -fsSL https://deb.nodesource.com/setup_23.x  | bash -
+RUN apt -y install nodejs
+RUN npm i -g npm
+RUN npm i -g yarn node-gyp
+RUN npm i
+RUN ffmpeg -version
 
-RUN yarn global add node-gyp
-RUN yarn install
 COPY . .
-
 CMD ["yarn", "start"]
